@@ -4,7 +4,8 @@ L = apriori(T, support_min);
 R = [];
 Ra = [];
 
-for Z = L', Z=Z';
+for Z = L'
+    Z=Z';
    Rz = [];
    
    az = anzahl(T, Z);
