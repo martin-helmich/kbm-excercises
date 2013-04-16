@@ -14,14 +14,14 @@ for Z = L', Z=Z';
    
    D = [];
    D1 = [];
-   [rows, cols] = size(Z);
+   cols = size(Z,2);
    
    for j=1:cols
-      if Z(1,j) == 0, break, end; 
+      if Z(1,j) == 0, continue, end; 
       
       W = Z;
       W(1,j) = 0;
-      d = xor(Z,W);
+      d = Z & ~W;
       
       if az >= confidence_min * anzahl(T, W)
           D1 = [D1;d];
@@ -62,16 +62,15 @@ for Z = L', Z=Z';
    fprintf('Alle Dann-Teile:');
    D
    
-   [r,c] = size(D);
-   
-   fprintf('Regeln:')
+   r = size(D,1);
    R = repmat(Z,r,1);
    if isempty(R) == 0
        Ra = [Ra; R + D];
    end
 end
 
-Ra
+fprintf('%d Regeln gefunden.\n', size(Ra,1))
+R = Ra;
 
 
 end
