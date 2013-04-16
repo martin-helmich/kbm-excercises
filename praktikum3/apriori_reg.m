@@ -7,9 +7,6 @@ Ra = [];
 for Z = L', Z=Z';
    Rz = [];
    
-   fprintf('Betrachte Item-Menge:\n')
-   Z
-   
    az = anzahl(T, Z);
    
    D = [];
@@ -28,9 +25,6 @@ for Z = L', Z=Z';
       end
    end
    
-   fprintf('1-Elementige Dann-Teile:\n')
-   D1
-   
    D = D1;
    l = 2;
    
@@ -38,9 +32,6 @@ for Z = L', Z=Z';
        Cl = apriori_gen(D1);
        D2 = [];
        [rows,cols] = size(Cl);
-       
-       fprintf('%i-elementige Kandidaten:\n', l)
-       Cl
        
        for j=1:rows
            d = Cl(j,:);
@@ -51,16 +42,10 @@ for Z = L', Z=Z';
            end
        end
        
-       fprintf('%i-elementige Dann-Teile:\n', l);
-       D2
-       
        l = l + 1;
        D = [D; D2];
        D1 = D2;
    end
-   
-   fprintf('Alle Dann-Teile:');
-   D
    
    r = size(D,1);
    R = repmat(Z,r,1);
@@ -69,9 +54,7 @@ for Z = L', Z=Z';
    end
 end
 
-fprintf('%d Regeln gefunden.\n', size(Ra,1))
 R = Ra;
-
 
 end
 
