@@ -1,4 +1,4 @@
-function [ a ] = values( W1, W2, d0 )
+function [ a, e1, e2, d1 ] = values( W1, W2, d0 )
 
 e1 = W1 * [d0; ones(1,size(d0,2)) ];
 d1 = [ tansig(e1) ; ones(1,size(d0,2)) ];
@@ -13,4 +13,3 @@ a = d2;
 % 6.109
 
 end
-
