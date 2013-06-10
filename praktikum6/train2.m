@@ -3,7 +3,7 @@ function [ W1,W2,W3 ] = train2( W1,W2,W3,E,A )
 %   Detailed explanation goes here
 
 columns = size(E, 2);
-sigma   = 0.1;
+sigma   = 0.05;
 sse0    = 1000;
 sse     = 0;
 
@@ -39,17 +39,17 @@ for j = 1:5000
     %disp(g1);
     %disp(g2);
 
-    W1 = W1 - sigma * g1;
-    W2 = W2 - sigma * g2;
-    W3 = W3 - sigma * g3;
-    
     if (sse > sse0)
         sigma = sigma * 0.5;
         fprintf('Hoppla\n', sigma);
     else
         sigma = sigma * 1.01;
-    end
     
+        W1 = W1 - sigma * g1;
+        W2 = W2 - sigma * g2;
+        W3 = W3 - sigma * g3;
+    end  
+  
     sse0 = sse;
 
     fehler = [fehler ; sse ];

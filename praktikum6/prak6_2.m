@@ -22,4 +22,9 @@ and(k1,not(k2))]; % 4. Quadrant
 %plot(E(1,A(3,:)),E(2,A(3,:)),'sk');
 %plot(E(1,A(4,:)),E(2,A(4,:)),'pk');
 
-[W1,W2,W3] = train2(W1,W2,W3,E(:,1:50),A);
+[W1,W2,W3] = train2(W1,W2,W3,E,A);
+
+D = round(values2(W1,W2,W3,E));
+
+D
+D - A
