@@ -1,6 +1,6 @@
 n_in  = 2;
 n_middle1 = 6;
-n_middle2 = 6;
+n_middle2 = 9;
 n_out = 4;
 
 W1 = 2 * rand(n_middle1, n_in + 1) - 1;
@@ -26,7 +26,7 @@ plot(E(1,A(2,:)),E(2,A(2,:)),'*k');
 plot(E(1,A(3,:)),E(2,A(3,:)),'sk');
 plot(E(1,A(4,:)),E(2,A(4,:)),'pk');
 
-[W1,W2,W3] = train2(W1,W2,W3,E(:,1:50),A);
+[W1,W2,W3] = train2(W1,W2,W3,E,A);
 
 while true
     [ix,iy] = ginput(1);

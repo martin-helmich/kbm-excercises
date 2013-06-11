@@ -9,7 +9,7 @@ sse     = 0;
 
 fehler = []
 
-for j = 1:5000
+for j = 1:3000
     sse = 0;
     g1 = zeros(size(W1));
     g2 = zeros(size(W2));
@@ -43,7 +43,7 @@ for j = 1:5000
         sigma = sigma * 0.5;
         %fprintf('Hoppla (Fehler: %f)\n', sse);
     else
-        sigma = sigma * 1.01;
+        sigma = sigma * 1.1;
   
         fehler = [fehler ; sse ];
     
@@ -54,8 +54,10 @@ for j = 1:5000
 
     sse0 = sse; 
 
-    if mod(j, 20) == 0
-        fprintf('Durchschnitts-Fehler nach %i Iterationen: %f (sigm: %f)\n', j, sse / columns, sigma);
+    if mod(j, 100) == 0
+        fprintf('Durchschnitts-Fehler nach %i Iterationen: %f (sigm: %f, %f)\n', ...
+            j, sse / columns, sigma, ...
+            sqrt(sum(sum(g1.^2))+sum(sum(g2.^2))+sum(sum(g3.^2))));
     end
     
     if sse < 0.001
