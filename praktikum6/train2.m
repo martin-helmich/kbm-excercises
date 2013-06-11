@@ -4,7 +4,7 @@ function [ W1,W2,W3 ] = train2( W1,W2,W3,E,A )
 
 columns = size(E, 2);
 sigma   = 0.05;
-sse0    = 1000;
+sse0    = inf;
 sse     = 0;
 
 fehler = []
@@ -41,19 +41,22 @@ for j = 1:5000
 
     if (sse > sse0)
         sigma = sigma * 0.5;
-        fprintf('Hoppla\n', sigma);
+        %fprintf('Hoppla (Fehler: %f)\n', sse);
     else
         sigma = sigma * 1.01;
+  
+        fehler = [fehler ; sse ];
     
         W1 = W1 - sigma * g1;
         W2 = W2 - sigma * g2;
         W3 = W3 - sigma * g3;
-    end  
-  
-    sse0 = sse;
+    end 
 
-    fehler = [fehler ; sse ];
-    fprintf('Durchschnitts-Fehler nach %i Iterationen: %f (sigm: %f)\n', j, sse, sigma);
+    sse0 = sse; 
+
+    if mod(j, 20) == 0
+        fprintf('Durchschnitts-Fehler nach %i Iterationen: %f (sigm: %f)\n', j, sse / columns, sigma);
+    end
     
     if sse < 0.001
         fprintf('Reicht jetzt.\n');
@@ -61,8 +64,8 @@ for j = 1:5000
     end
 end
 
-figure
-plot(fehler);
+%figure
+%plot(fehler);
 
 end
 
