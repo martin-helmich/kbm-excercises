@@ -1,7 +1,7 @@
 %% BASIC DATA PLOTTING
 %%
 %% Martin Helmich <martin.helmich@hs-osnabrueck.de>
-%% UAS Osnabrück
+%% University of Applied Sciences Osnabrück
 %%
 %% This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
 %% Unported License. To view a copy of this license, visit
