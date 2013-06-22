@@ -28,5 +28,10 @@ plot(v1, v2, '+');
 lengths = ((v1 .^ 2) + (v2 .^ 2)) .^ 0.5;
 hist(lengths, 7)
 
+%% Excercise E
+%  Apply the "zscore" method to Z and plot the result.
+%
+%  Note: In GNU Octave, you need the "nan" package for the zscore() function.
+%  Alternatively, you can use "studentize", which basically does the same.
 Z = zscore(S);
 plot(Z(:,1), Z(:,2), '.');
