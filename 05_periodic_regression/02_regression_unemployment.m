@@ -1,13 +1,18 @@
-S = dlmread('wbsa0231.dat');
+S = dlmread('example_data/wbsa0231.dat');
 A = S;
 
 %% Polynomische Regression
 
 figure
 hold on;
+title('Unemployment raw data');
+
 plot(S(:,1), S(:,2), 'b-');
 
+pause();
+
 R = [S(:,1).^3 S(:,1).^2 S(:,1) ones(size(S,1),1)];
+fprintf('Foobar');
 
 a = (R'*R)\R' * S(:,2);
 a
@@ -25,6 +30,7 @@ Sp(:,2) = Sp(:,2) - y';
 Sp(:,2) = Sp(:,2) - Sp(1,2);
 
 plot(x, Sp(:,2), 'g-');
+pause();
 
 
 %% Periodische Regression
@@ -55,9 +61,7 @@ R = [];
 for f = mf
    R = [R, cos(2*pi * f .* t), sin(2*pi * f .* t)];
 end
-%R = [R];
 
-%R = [cos(2*pi * mf(1) .* t) , sin(2*pi * mf(1) .* t) , cos(2*pi * mf(2) .* t) , sin(2*pi * mf(2) .* t), cos(2*pi * mf(3) .* t) , sin(2*pi * mf(3) .* t),cos(2*pi * mf(4) .* t) , sin(2*pi * mf(4) .* t) ];
 a = (R'*R)\R' * (S - xm);
 a
 
@@ -69,8 +73,6 @@ for f = mf
    y = y + a(2*i+1) * cos(2*pi * f .* x) + a(2*i+2) * sin(2*pi * f .* x);
    i = i + 1;
 end
-%y = y + xm;
-%y = xm + a(1) * cos(2*pi * mf(1) .* x) + a(2) * sin(2*pi * mf(2) .* x) + a(3) * cos(2*pi * mf(2) .* x) + a(4) * sin(2*pi * mf(2) .* x)+ a(5) * cos(2*pi * mf(3) .* x) + a(6) * sin(2*pi * mf(3) .* x)+ a(7) * cos(2*pi * mf(4) .* x) + a(8) * sin(2*pi * mf(4) .* x);
 
 figure;
 hold on;
@@ -84,3 +86,5 @@ figure;
 hold on;
 plot(A(:,1), A(:,2), 'b-');
 plot(x1, y1 + y, 'r-');
+
+pause();
