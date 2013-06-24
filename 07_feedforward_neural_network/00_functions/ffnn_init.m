@@ -1,3 +1,14 @@
+%% FEEDFORWARD NEURAL NETWORK (INITIALIZATION)
+%%
+%% Martin Helmich <martin.helmich@hs-osnabrueck.de>
+%% University of Applied Sciences Osnabrück
+%%
+%% This work is licensed under the Creative Commons Attribution-ShareAlike 3.0
+%% Unported License. To view a copy of this license, visit
+%%
+%%   http://creativecommons.org/licenses/by-sa/3.0/
+
+
 function[net] = ffnn_init(
     neuron_counts,
     default_activation_function = @tansig

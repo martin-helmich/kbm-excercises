@@ -17,14 +17,15 @@ if OCTAVE_VERSION
     pkg load nnet;
 end
 
-E = [0 1 0 1 
-     0 0 1 1];
-A = [0 1 1 0];
+E = [0 1 0 0 1 1 0 1 
+     0 0 1 0 1 0 1 1 
+     0 0 0 1 0 1 1 1];
+A = [0 1 1 1 0 0 0 1];
 
 ffnn_create_train_test(
     E,
     A,
-    [2 2 1]
+    [3 2 1]
 );
 
 pause();
